@@ -28,6 +28,7 @@ app.get('/', (_req, res) => {
     res.send('Alive!');
 });
 console.log('OpenAPI initialized');
+console.log('Server is up and running');
 module.exports = app;
 app.listen(3000);
 //# sourceMappingURL=app.js.map

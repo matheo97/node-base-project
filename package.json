@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build && node build/app.js",
     "build": "rimraf ./build && tsc",
-    "start:dev": "tsc && node build/app.js",
+    "start:dev": "tsc && nodemon",
     "lint": "eslint . --ext .ts"
   },
   "author": "Mateo Salazar",
