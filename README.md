@@ -1,5 +1,5 @@
-# node-base-project
-Base backend project
+# Base backend project
+This project has been created to have the basic set up to start a REST API with the best practices
 
 ## Built With
 
