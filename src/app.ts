@@ -1,11 +1,13 @@
 import * as bodyParser from 'body-parser';
 import * as path from 'path';
-import { apiDoc } from './api/api-doc';
+import apiDoc from './api-doc';
+import commandLineArgs from 'command-line-args';
 import cors from 'cors';
 import express from 'express';
 import { initialize } from 'express-openapi';
 import { middlewareErrorHandler } from './utils/errorHandler';
 import multer from 'multer';
+import { writeFileSync } from 'fs';
 
 const app = express();
 const storage = multer.memoryStorage();
@@ -19,7 +21,7 @@ const upload = multer({ storage,
 app.use(cors());
 app.use(bodyParser.json());
 
-initialize({
+const apiSpec = initialize({
   app,
   apiDoc,
   paths: path.join(__dirname, 'api', 'paths'),
@@ -44,8 +46,21 @@ app.get('/', (_req: express.Request, res: express.Response) => {
   res.send('Alive!');
 });
 console.log('OpenAPI initialized');
-console.log('Server is up and running');
+
+const optionDefinitions = [
+  { name: 'generate-docs', alias: 'd', type: Boolean },
+  { name: 'outfile', alias: 'o', type: String },
+];
+const options = commandLineArgs(optionDefinitions);
+
+if (options['generate-docs']) {
+  const outfile = options.outfile || 'openapi.json';
+  writeFileSync(outfile, JSON.stringify(apiSpec.apiDoc, null, 2));
+  process.exit(0);
+} else {
+  app.listen(3000);
+  console.log('Server ready');
+}
+
 
 module.exports = app;
-
-app.listen(3000);

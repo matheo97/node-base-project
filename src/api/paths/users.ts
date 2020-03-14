@@ -4,10 +4,8 @@ import { Operation } from 'express-openapi';
 
 const GET: Operation = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   try {
-    console.log('asdasdasdas');
     const user = true;
     const statusCode: any = 200;
-    throw new Error('Error!!! parcero');
     res.status(statusCode).json(user);
   } catch (err) {
     next(err);
