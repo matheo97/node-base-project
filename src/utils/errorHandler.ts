@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 import express from 'express';
 
 const middlewareErrorHandler: express.ErrorRequestHandler = (

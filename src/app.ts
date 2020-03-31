@@ -61,6 +61,3 @@ if (options['generate-docs']) {
   app.listen(3000);
   console.log('Server ready');
 }
-
-
-module.exports = app;

@@ -1,12 +1,11 @@
-import express from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { OpenAPIV3 } from 'openapi-types';
 import { Operation } from 'express-openapi';
 
-const GET: Operation = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+const GET: Operation = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const user = true;
     const statusCode: any = 200;
-    res.status(statusCode).json(user);
+    res.status(statusCode).json({ success: true });
   } catch (err) {
     next(err);
   }
