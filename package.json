@@ -45,7 +45,7 @@
     "chai-subset": "^1.6.0",
     "dtsgenerator": "^2.5.0",
     "eslint": "^6.8.0",
-    "mocha": "^7.1.0",
+    "mocha": "^10.2.0",
     "nodemon": "^2.0.2",
     "npm": "^6.14.2",
     "openapi-types": "^1.3.5",
